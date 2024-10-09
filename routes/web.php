@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('products', ProductController::class);
+
+Route::get('/order/create/{product_id}', [App\Http\Controllers\OrderController::class, 'index'])->middleware('auth')->name('order');
+
+Route::view('/order/response', 'order.response')->name('order.response');
+
+
+
